@@ -9,14 +9,18 @@
     http://www.eclipse.org/legal/epl-v10.html
 
 -->
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.2.0" name="org.openhab.binding.ashasis">
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.2.0" 
+activate="activate" name="org.openhab.binding.ashasis" 
+immediate="true" configuration-pid="org.openhab.ashasis" configuration-policy="require"
+>
 	<implementation class="org.openhab.binding.ashasis.internal.AshasisBinding" />
 
 	<service>
 		<provide interface="org.osgi.service.event.EventHandler" />
 		<provide interface="org.openhab.model.item.binding.BindingConfigReader"/>
+		<provide interface="org.osgi.service.cm.ManagedService"/>
 	</service>
 
 	<property name="event.topics" type="String" value="openhab/command/*" />
-
+	<property name="service.pid" type="String" value="org.openhab.ashasis" />
 </scr:component>
